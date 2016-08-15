@@ -15,6 +15,7 @@ class LinksController < ApplicationController
       slug: params[:slug],
       target_url: params[:target_url]
       )
+    link.standardize_target_url!
 
     if link.save
       flash[:success] = "URL Shortened!"
