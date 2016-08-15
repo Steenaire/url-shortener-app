@@ -8,7 +8,7 @@
   </tr>
   <% @links.each do |link| %>
     <tr>
-      <td><%= link.slug %></td>
+      <td><a href="/links/<%= link.id %>"><%= link.slug %></a></td>
       <td><%= link.target_url %></td>
       <td><%= link.created_at %></td>
     </tr>
