@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/links/', to: 'links#index'
   get '/links/new', to: 'links#new'
   post '/links', to: 'links#create'
+  get '/links/:id', to: 'links#show'
 
   get '/:slug', to: 'visits#create'
 end

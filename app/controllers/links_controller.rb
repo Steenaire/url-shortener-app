@@ -6,6 +6,10 @@ class LinksController < ApplicationController
     @links = Link.where(user_id: current_user.id)
   end
 
+  def show
+    @link = Link.find_by(id: params[:id])
+  end
+
   def new
   end
 
