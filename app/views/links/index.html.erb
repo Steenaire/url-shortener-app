@@ -5,12 +5,14 @@
     <th>Slug</th>
     <th>Target URL</th>
     <th>Created At</th>
+    <th>Delete Link?</th>
   </tr>
   <% @links.each do |link| %>
     <tr>
       <td><a href="/links/<%= link.id %>"><%= link.slug %></a></td>
       <td><%= link.target_url %></td>
       <td><%= link.created_at %></td>
+      <td><%= link_to "Delete!", "/links/#{link.id}", method: :delete %></td>
     </tr>
   <% end %>
 <table>

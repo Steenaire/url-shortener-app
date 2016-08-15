@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/links/new', to: 'links#new'
   post '/links', to: 'links#create'
   get '/links/:id', to: 'links#show'
+  delete '/links/:id', to: 'links#destroy'
 
   get '/:slug', to: 'visits#create'
 end
