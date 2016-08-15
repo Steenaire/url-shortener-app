@@ -53,8 +53,9 @@ class LinksController < ApplicationController
   end
 
   def update
-    @link = Link.find(params[:id])
-    Link.update(link_params)
+    @link = Link.find_by(id: params[:id])
+    Link.update(@link.id, link_params)
+    @link.standardize_target_url!
     if @link.save
       flash[:success] = "Link Updated!"
       redirect_to "/links/#{@link.id}"
