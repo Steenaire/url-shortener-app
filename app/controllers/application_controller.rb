@@ -5,5 +5,12 @@ class ApplicationController < ActionController::Base
   def current_user
     User.find_by(id: session[:user_id]) if session[:user_id]
   end
+
+  def authenticate_user!
+    unless current_user
+      flash[:warning] = "Please sign in first"
+      redirect_to "/login"
+    end
+  end
   
 end
