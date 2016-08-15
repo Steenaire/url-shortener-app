@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show', as: 'user'
 
   get '/links/', to: 'links#index'
+  get '/links/new', to: 'links#new'
+  post '/links', to: 'links#create'
 end
