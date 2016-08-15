@@ -9,13 +9,15 @@
     <th>Delete Link?</th>
   </tr>
   <% @links.each do |link| %>
-    <tr>
-      <td><a href="/links/<%= link.id %>"><%= link.slug %></a></td>
-      <td>http://localhost:3000/<%= link.slug %></td>
-      <td><%= link.target_url %></td>
-      <td><%= link.created_at %></td>
-      <td><%= link_to "Delete!", "/links/#{link.id}", method: :delete %></td>
-    </tr>
+    <% if link.user_id == current_user.id %>
+      <tr>
+        <td><a href="/links/<%= link.id %>"><%= link.slug %></a></td>
+        <td>http://localhost:3000/<%= link.slug %></td>
+        <td><%= link.target_url %></td>
+        <td><%= link.created_at %></td>
+        <td><%= link_to "Delete!", "/links/#{link.id}", method: :delete %></td>
+      </tr>
+    <% end %>
   <% end %>
 <table>
 <a href="/links/new">Shorten a New URL</a>

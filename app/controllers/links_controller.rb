@@ -43,4 +43,33 @@ class LinksController < ApplicationController
     redirect_to "/links"
   end
 
+  def edit
+    @link = Link.find_by(id: params[:id], user_id: current_user.id)
+
+    unless @link
+      flash[:warning] = "No such link"
+      redirect_to "/links"
+    end
+  end
+
+  def update
+    @link = Link.find(params[:id])
+    Link.update(link_params)
+    if @link.save
+      flash[:success] = "Link Updated!"
+      redirect_to "/links/#{@link.id}"
+    else
+      render 'edit'
+    end
+  end
+
+  private
+
+    def link_params
+      params.require(:link).permit(
+        :slug,
+        :target_url
+        )
+    end
+
 end

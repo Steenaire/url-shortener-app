@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   get '/links/', to: 'links#index'
   get '/links/new', to: 'links#new'
   post '/links', to: 'links#create'
-  get '/links/:id', to: 'links#show'
+  get '/links/:id', to: 'links#show', as: 'link'
   delete '/links/:id', to: 'links#destroy'
+  get '/links/:id/edit', to: 'links#edit', as: 'edit_link'
+  patch '/links/:id', to: 'links#update'
 
   get '/:slug', to: 'visits#create'
 end
