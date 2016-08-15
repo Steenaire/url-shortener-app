@@ -1,4 +1,7 @@
 <h1>Link Stats for <%= @link.slug%></h1>
 <h3>Visits: <%= @link.visit_count %></h3>
+<p>Slug: <%= @link.slug %></p>
+<p>Target URL: <%= @link.target_url %></p>
+<p>Shortened URL: localhost:3000/<%= @link.slug %></p>
 <a href="/links/<%= @link.id %>/edit">Edit Link</a>
 <a href="/links"><p>Back</p></a>
