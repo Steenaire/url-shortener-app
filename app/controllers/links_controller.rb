@@ -7,7 +7,12 @@ class LinksController < ApplicationController
   end
 
   def show
-    @link = Link.find_by(id: params[:id])
+    @link = Link.find_by(id: params[:id], user_id: current_user.id)
+
+    unless @link
+      flash[:warning] = "No such link"
+      redirect_to "/links"
+    end
   end
 
   def new
